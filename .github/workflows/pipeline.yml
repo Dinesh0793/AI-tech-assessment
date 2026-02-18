@@ -30,10 +30,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker stop AITECH || true
-            docker rm AITECH-container || true
-            docker pull ${{ secrets.DOCKER_USERNAME }}/AITECH:latest
-            docker run -d \
-              --name AITECH-container \
-              -p 3001:80 \
-              ${{ secrets.DOCKER_USERNAME }}/AITECH:latest
+            sudo docker stop AITECH || true
+            sudo docker rm AITECH-container || true
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/AITECH:latest
+            sudo docker run -d --name AITECH-container -p 3001:80 ${{ secrets.DOCKER_USERNAME }}/AITECH:latest
