@@ -33,4 +33,4 @@ jobs:
             sudo docker stop aitech || false
             sudo docker rm aitech-container || true
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/aitech:latest
-            sudo docker run -d --name aitech-container -p 3001:80 ${{ secrets.DOCKER_USERNAME }}/aitech:latest
+            sudo docker run -itd --name aitech-container -p 3001:80 ${{ secrets.DOCKER_USERNAME }}/aitech:latest
