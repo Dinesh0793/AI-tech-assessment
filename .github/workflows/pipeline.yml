@@ -23,7 +23,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/aitech:latest
 
-      - name: Deploy to EC2 via SSH
+      - name: Deploy to EC2
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -33,4 +33,4 @@ jobs:
             sudo docker stop aitech || true
             sudo docker rm aitech-container || true
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/aitech:latest
-            sudo docker run -d --name aitech-container -p 3001:80 ${{ secrets.DOCKER_USERNAME }}/AITECH:latest
+            sudo docker run -d --name aitech-container -p 3001:80 ${{ secrets.DOCKER_USERNAME }}/aitech:latest
